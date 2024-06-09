@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: 1.0.0/master-changelog.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: 1.0.0/chageset/create-user-table.yaml

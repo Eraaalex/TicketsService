@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0
+      author: eaermolaeva_2@edu.hse.ru
+      changes:
+        - sqlFile:
+            path: sql/user.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
