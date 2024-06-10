@@ -49,7 +49,7 @@ services:
     depends_on:
       - database-auth
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://database-auth:5431/auth_db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database-auth:5432/auth_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
     ports:
@@ -63,7 +63,7 @@ services:
     depends_on:
       - database-ticket
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://database-ticket:5433/ticket_db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database-ticket:5432/ticket_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
     ports:

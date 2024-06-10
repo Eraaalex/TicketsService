@@ -8,7 +8,7 @@ spring:
   liquibase:
     enabled: true
   datasource:
-    url: jdbc:postgresql://localhost:5431/hse_sc
-    username: postgres-user
-    password: postgres-password
+    url: jdbc:postgresql://localhost:5432/auth_db
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
