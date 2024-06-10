@@ -46,17 +46,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
 
-
-
-
-
-
-//
-//    compileOnly("org.projectlombok:lombok:1.18.26")
-//    annotationProcessor("org.projectlombok:lombok:1.18.26")
     compileOnly("javax.servlet:javax.servlet-api:4.0.1")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+

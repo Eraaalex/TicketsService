@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/authorization/src/main/resources/db/changelog/1.0.0/chageset/sql/user.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/ticketsapp/src/main/resources/db/changelog/1.0.0/chageset/sql/order.sql" dialect="H2" />
+  </component>
+</project>

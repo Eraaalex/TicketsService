@@ -1,10 +1,9 @@
-package com.hse.software.construction.ticketsapp.authorization.config;
+package com.hse.software.construction.ticketsapp.authorization.filter;
 
 import com.hse.software.construction.ticketsapp.authorization.service.JwtService;
 import io.jsonwebtoken.JwtException;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

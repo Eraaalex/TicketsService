@@ -1,0 +1,74 @@
+version: "3.7"
+
+services:
+  database-ticket:
+    image: postgres
+    container_name: postgres-ticket
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ticket_db
+    volumes:
+      - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - ticket-db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      start_period: 15s
+      timeout: 3s
+      interval: 10s
+      retries: 12
+
+  database-auth:
+    image: postgres
+    container_name: postgres-auth
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth_db
+    volumes:
+      - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - auth-db-data:/var/lib/postgresql/data
+    ports:
+      - "5431:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      start_period: 15s
+      timeout: 3s
+      interval: 10s
+      retries: 12
+
+  auth-service:
+    build:
+      context: ./authorization
+      dockerfile: Dockerfile
+    container_name: auth_service
+    depends_on:
+      - database-auth
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database-auth:5431/auth_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+
+  ticket-service:
+    build:
+      context: ./ticketsapp
+      dockerfile: Dockerfile
+    container_name: ticket_service
+    depends_on:
+      - database-ticket
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database-ticket:5433/ticket_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "9090:9090"
+
+volumes:
+  ticket-db-data:
+  auth-db-data:

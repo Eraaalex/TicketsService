@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "143ac9bf-3df4-4062-90ec-535112a1bed9",
+		"name": "TIckets collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33032824"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "localhost:8080/info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiZW1haWwiOiJlcmFsZXhAZ21haWwuY29tIiwic3ViIjoiRXJhbGV4IiwiaWF0IjoxNzE4MTE2ODc0LCJleHAiOjE3MTgxMTk4NzR9.07829uh16ww2kKa9IkWv6CnOHSoea-zWE03DQFra5mMIT8lRHmUhiLrcIYlLnYE6",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/auth/info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"info"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Eralex\",\r\n    \"password\" : \"12345\",\r\n    \"email\" : \"eralex@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"username\" : \"Eralex\",\r\n    \"password\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "localhost:9090/order/create-order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiZW1haWwiOiJlcmFsZXhAZ21haWwuY29tIiwic3ViIjoiRXJhbGV4IiwiaWF0IjoxNzE4MTE2ODc0LCJleHAiOjE3MTgxMTk4NzR9.07829uh16ww2kKa9IkWv6CnOHSoea-zWE03DQFra5mMIT8lRHmUhiLrcIYlLnYE6",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 1,\r\n  \"timestamp\": \"2024-06-11T12:34:56.789Z\",\r\n  \"fromStationId\": 1,\r\n  \"toStationId\": 2\r\n}\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/order/create-order",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"order",
+								"create-order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

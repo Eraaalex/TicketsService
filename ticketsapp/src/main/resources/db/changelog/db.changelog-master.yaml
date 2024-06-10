@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: 1.0.0/chageset/create-station-table.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: 1.0.0/chageset/create-order-table.yaml

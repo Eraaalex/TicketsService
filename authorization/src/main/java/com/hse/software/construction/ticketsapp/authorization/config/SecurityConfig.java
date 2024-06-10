@@ -1,6 +1,7 @@
 package com.hse.software.construction.ticketsapp.authorization.config;
 
 
+import com.hse.software.construction.ticketsapp.authorization.filter.JwtRequestFilter;
 import com.hse.software.construction.ticketsapp.authorization.service.DefaultUserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -33,13 +34,10 @@ public class SecurityConfig {
                         c ->
                                 c
                                         .requestMatchers("/user/**").hasAuthority("USER")
-                                        .requestMatchers("/", "/home", "/login", "/register").permitAll()
+                                        .requestMatchers("/", "/home", "/auth/login", "/auth/register", "/auth/info").permitAll()
                                         .anyRequest().authenticated()
                 ).sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .exceptionHandling((exception)-> exception.authenticationEntryPoint(jwtAuthenticationEntryPoint).accessDeniedPage("/error/accedd-denied")
-//                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
-//            .formLogin {}
                 .userDetailsService(defaultUserDetailsService);
 
         return http.build();
